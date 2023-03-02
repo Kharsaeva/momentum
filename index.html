@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="assets/favicon.ico" rel="shortcut icon" />
   <link rel="stylesheet" href="css/owfont-regular.css" />
+  <link rel="stylesheet" href="css/owfont-regular.css" />
   <link rel="stylesheet" href="css/style.css" />
   <title>momentum</title>
 </head>
+
 <body>
   <header class="header">
-    <div class="player">
+    <div class="player" id="audio">
+      <audio class="audio" src=""></audio>
+      <p class="track-name"></p>
+      <div class="track-progress">
+        <span class="current-time">--:--</span>
+        <input class="duration-progress" type="range" min="1" max="100" value="0" />
+        <span class="total-time">--:--</span>
+        <div class="volume-control">
+          <img width="15" class="sound-button sound mute" id="unmute" src="./assets/svg/speaker.svg" alt="" />
+          <input class="volume" type="range" min="0" max="1" step="0.01" value="1" id="volume" />
+        </div>
+      </div>
       <div class="player-controls">
-        <audio id="audio" src=""></audio>
         <button class="play-prev player-icon"></button>
         <button class="play player-icon"></button>
         <button class="play-next player-icon"></button>
       </div>
       <ul class="play-list"></ul>
     </div>
-    <div class="weather">
-      <input type="text" class="city" />
+    <div class="weather" id="weather">
+      <input type="text" class="city" placeholder="Введите город" />
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
       <div class="description-container">
@@ -36,20 +49,100 @@
       <button class="slide-prev slider-icon"></button>
       <button class="slide-next slider-icon"></button>
     </div>
-    <time class="time"></time>
-    <date class="date"></date>
-    <div class="greeting-container">
+    <time class="time" id="time"></time>
+    <date class="date" id="date"></date>
+    <div class="greeting-container" id="greeting">
       <span class="greeting"></span>
-      <input type="text" class="name" id="name" placeholder="[Enter name]"/>
+      <input type="text" class="name" id="name" placeholder="[Enter name]" />
     </div>
   </main>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div class="qoute-container">
-      <blockquote class="quote"></blockquote>
-      <cite class="author"></cite>
+    <div class="settings-container">
+      <img class="settings-icon" width="40" src="/assets/icons/settings-icon.png" alt="">
+      <div class="settings-block">
+        <div class="settings-group">
+          <div class="title-group">
+            <div class="div-title-img"><img class="img-title" width="20" src="/assets/icons/translate.png" alt=""></div>
+            <div class="title-settings">Язык</div>
+          </div>
+          <ul class="ul-list language-block">
+            <li class="li-item english mark-item">
+              English
+              <!-- <img class="mark" width="23px" src="/assets/icons/mark.png" alt=""> -->
+            </li>
+            <li class="li-item russian mark-item">
+              Русский
+              <!-- <img class="mark" width="23px" src="/assets/icons/mark.png" alt=""> -->
+            </li>
+          </ul>
+        </div>
+        <div class="settings-group">
+          <div class="title-group">
+            <div class="div-title-img"><img class="img-title" width="20" src="/assets/icons/wallpaper.png" alt=""></div>
+            <div class="title-settings">Обои</div>
+          </div>
+          <ul class="ul-list theme">
+            <li class="li-item github mark-img">
+              Github
+              <!-- <img class="mark mark-theme" width="23px" src="/assets/icons/mark.png" alt=""> -->
+            </li>
+            <li class="li-item unsplash mark-img">
+              Unsplash API
+              <!-- <img class="mark mark-theme" width="23px" src="/assets/icons/mark.png" alt=""> -->
+            </li>
+          </ul>
+          <div class="search-group">
+            <input type="text" class="tag-photo" placeholder="Enter tag">
+            <button class="search-btn">
+              <img class="search-icon" width="25" src="/assets/icons/search.png" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <div class="title-group">
+            <div class="div-title-img"><img class="img-title" width="20" src="/assets/icons/invisible.png" alt=""></div>
+            <div class="title-settings">Скрыть/Показать</div>
+          </div>
+          <ul class="blocks-list">
+            <li class="li-item">Время</li>
+            <li class="li-item">Дата</li>
+            <li class="li-item">Приветствие</li>
+            <li class="li-item">Цитата</li>
+            <li class="li-item">Погода</li>
+            <li class="li-item">Аудио</li>
+            <li class="li-item">Список дел</li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <div class="qoute-div" id="quote">
+      <button class="change-quote"></button>
+      <div class="qoute-container">
+        <blockquote class="quote"></blockquote>
+        <cite class="author"></cite>
+      </div>
+    </div>
+    <div class="todo-container" id="todolist">
+      <img class="todo-icon" width="35" src="/assets/icons/todo-list.png" alt="">
+      <div class="todo-list">
+        <div class="input-value">
+          <input class="todo-input" type="text" placeholder="Add task" value="" />
+          <button class="add-btn"><img width="25px" src="/assets/icons/plus.png" alt=""></button>
+        </div>
+
+        <div class="todo-items"></div>
+        <button class="clear-all-btn"">
+            Clear all
+          </button>
+        </div>
+      </div>
+      <div class=" footer-links">
+          <div><a href="https://github.com/Kharsaeva" target="_blank">Github</a></div>
+          <div>2023</div>
+          <div><a href="https://rs.school/js" target="_blank">RS School</a></div>
+      </div>
   </footer>
   <script type="module" src="js/script.js"></script>
 </body>
+
 </html>
